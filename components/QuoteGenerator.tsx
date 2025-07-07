@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
 import quotesData from '@/data/quotes.json'
 
 interface Quote {
@@ -16,6 +18,8 @@ export default function QuoteGenerator() {
   const [topic, setTopic] = useState('')
   const [quotes, setQuotes] = useState<Quote[]>([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const availableTopics = Object.keys(quotesData)
 
   const generateQuotes = () => {
     if (!topic.trim()) return
@@ -67,6 +71,10 @@ export default function QuoteGenerator() {
     generateQuotes()
   }
 
+  const handleTopicClick = (selectedTopic: string) => {
+    setTopic(selectedTopic)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto py-8">
@@ -79,7 +87,7 @@ export default function QuoteGenerator() {
           <CardHeader>
             <CardTitle>Enter a Topic</CardTitle>
             <CardDescription>
-              Type any topic like "motivation", "success", "inspiration", "wisdom", or "technology"
+              Type any topic or click on a suggestion below
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -95,6 +103,25 @@ export default function QuoteGenerator() {
                   className="text-lg"
                 />
               </div>
+              
+              <div className="space-y-3">
+                <Label className="text-sm text-gray-600">Popular Topics:</Label>
+                <div className="flex flex-wrap gap-2">
+                  {availableTopics.map((topicName) => (
+                    <Badge
+                      key={topicName}
+                      variant="secondary"
+                      className="cursor-pointer hover:bg-blue-100 transition-colors capitalize"
+                      onClick={() => handleTopicClick(topicName)}
+                    >
+                      {topicName}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              
+              <Separator />
+              
               <Button 
                 type="submit" 
                 className="w-full" 
