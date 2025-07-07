@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { Skeleton } from '@/components/ui/skeleton'
 import { toast } from 'sonner'
 import quotesData from '@/data/quotes.json'
 
@@ -214,8 +215,46 @@ export default function QuoteGenerator() {
           </CardContent>
         </Card>
 
+        {/* Loading skeleton */}
+        {isLoading && (
+          <div className="space-y-12 animate-in fade-in duration-500">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                Generating wisdom on "{topic}"...
+              </h2>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg animate-pulse"></div>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[1, 2, 3].map((index) => (
+                <Card 
+                  key={index} 
+                  className="h-full backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden"
+                >
+                  <CardContent className="p-8 h-full flex flex-col">
+                    <div className="flex-grow space-y-6">
+                      <Skeleton className="w-12 h-12 rounded-full" />
+                      <div className="space-y-3">
+                        <Skeleton className="h-6 w-full" />
+                        <Skeleton className="h-6 w-5/6" />
+                        <Skeleton className="h-6 w-4/6" />
+                        <Skeleton className="h-6 w-3/6" />
+                      </div>
+                    </div>
+                    <div className="mt-8 space-y-6">
+                      <div className="border-t border-white/20 pt-6">
+                        <Skeleton className="h-6 w-40 ml-auto" />
+                      </div>
+                      <Skeleton className="h-12 w-full rounded-2xl" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Modern quotes display */}
-        {quotes.length > 0 && (
+        {quotes.length > 0 && !isLoading && (
           <div className="space-y-12 animate-in fade-in duration-1000">
             <div className="text-center">
               <h2 className="text-4xl font-bold text-white mb-4">
