@@ -255,8 +255,8 @@ export default function QuoteGenerator() {
 
         {/* Modern quotes display */}
         {quotes.length > 0 && !isLoading && (
-          <div className="space-y-12 animate-in fade-in duration-1000">
-            <div className="text-center">
+          <div className="space-y-12">
+            <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
               <h2 className="text-4xl font-bold text-white mb-4">
                 Wisdom on "{topic}"
               </h2>
@@ -266,7 +266,11 @@ export default function QuoteGenerator() {
               {quotes.map((quote, index) => (
                 <Card 
                   key={index} 
-                  className="group h-full backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-[1.03] rounded-3xl overflow-hidden"
+                  className="group h-full backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-[1.03] rounded-3xl overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-700"
+                  style={{ 
+                    animationDelay: `${index * 200}ms`,
+                    animationFillMode: 'both'
+                  }}
                 >
                   <CardContent className="p-8 h-full flex flex-col">
                     <div className="flex-grow space-y-6">
