@@ -19,6 +19,7 @@ export default function QuoteGenerator() {
   const [topic, setTopic] = useState('')
   const [quotes, setQuotes] = useState<Quote[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [copyingIndex, setCopyingIndex] = useState<number | null>(null)
 
   const availableTopics = Object.keys(quotesData)
 
@@ -76,8 +77,10 @@ export default function QuoteGenerator() {
     setTopic(selectedTopic)
   }
 
-  const copyToClipboard = async (text: string, author: string) => {
+  const copyToClipboard = async (text: string, author: string, index: number) => {
     const quoteText = `"${text}" - ${author}`
+    setCopyingIndex(index)
+    
     try {
       await navigator.clipboard.writeText(quoteText)
       toast.success('Quote copied to clipboard!', {
@@ -89,6 +92,8 @@ export default function QuoteGenerator() {
         description: 'Please try again or copy manually',
         duration: 4000,
       })
+    } finally {
+      setCopyingIndex(null)
     }
   }
 
@@ -168,9 +173,10 @@ export default function QuoteGenerator() {
                     <Button 
                       variant="outline" 
                       className="mt-4" 
-                      onClick={() => copyToClipboard(quote.text, quote.author)}
+                      onClick={() => copyToClipboard(quote.text, quote.author, index)}
+                      disabled={copyingIndex === index}
                     >
-                      Copy Quote
+                      {copyingIndex === index ? 'Copying...' : 'Copy Quote'}
                     </Button>
                   </CardContent>
                 </Card>
