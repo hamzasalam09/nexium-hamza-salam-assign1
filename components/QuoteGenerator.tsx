@@ -75,6 +75,17 @@ export default function QuoteGenerator() {
     setTopic(selectedTopic)
   }
 
+  const copyToClipboard = async (text: string, author: string) => {
+    const quoteText = `"${text}" - ${author}`
+    try {
+      await navigator.clipboard.writeText(quoteText)
+      // Simple feedback - could be enhanced with toast notifications
+      console.log('Quote copied to clipboard!')
+    } catch (err) {
+      console.error('Failed to copy quote:', err)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto py-8">
@@ -148,6 +159,13 @@ export default function QuoteGenerator() {
                     <cite className="text-sm font-semibold text-gray-500 text-right">
                       — {quote.author}
                     </cite>
+                    <Button 
+                      variant="outline" 
+                      className="mt-4" 
+                      onClick={() => copyToClipboard(quote.text, quote.author)}
+                    >
+                      Copy Quote
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
