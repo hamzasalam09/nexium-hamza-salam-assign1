@@ -113,42 +113,61 @@ export default function QuoteGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-4xl mx-auto py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Quote Generator</h1>
-          <p className="text-lg text-gray-600">Get inspired with quotes tailored to your topic</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 relative">
+      {/* Modern background pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto py-12 relative z-10">
+        {/* Modern header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 mb-8 shadow-2xl">
+            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent mb-6 tracking-tight">
+            QuoteGenie
+          </h1>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
+            Discover profound wisdom and inspiration. Generate personalized quotes that resonate with your soul.
+          </p>
         </div>
 
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Enter a Topic</CardTitle>          <CardDescription>
-            Type any topic or click on a suggestion below. Press Enter to generate quotes quickly!
-          </CardDescription>
+        {/* Modern glassmorphism card */}
+        <Card className="mb-12 backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
+          <CardHeader className="text-center bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm">
+            <CardTitle className="text-3xl font-bold text-white mb-3">What moves you?</CardTitle>
+            <CardDescription className="text-slate-300 text-lg">
+              Enter a topic or select from our curated suggestions. Press Enter for instant inspiration!
+            </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="topic">Topic</Label>
+          <CardContent className="p-8 space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="space-y-4">
+                <Label htmlFor="topic" className="text-white font-semibold text-lg">Your Topic</Label>
                 <Input
                   id="topic"
                   type="text"
-                  placeholder="e.g., motivation, success, inspiration..."
+                  placeholder="motivation, wisdom, love, success..."
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="text-lg"
+                  className="text-xl bg-white/10 border-white/20 text-white placeholder:text-white/40 backdrop-blur-sm focus:bg-white/20 transition-all duration-300 h-14 rounded-2xl px-6"
                 />
               </div>
               
-              <div className="space-y-3">
-                <Label className="text-sm text-gray-600">Popular Topics:</Label>
-                <div className="flex flex-wrap gap-2">
+              <div className="space-y-6">
+                <Label className="text-white/90 font-semibold text-lg">Popular Topics:</Label>
+                <div className="flex flex-wrap gap-4">
                   {availableTopics.map((topicName) => (
                     <Badge
                       key={topicName}
                       variant="secondary"
-                      className="cursor-pointer hover:bg-blue-100 transition-colors capitalize"
+                      className="cursor-pointer bg-gradient-to-r from-white/10 to-white/15 hover:from-white/20 hover:to-white/25 text-white border-white/20 transition-all duration-300 hover:scale-110 capitalize px-6 py-3 text-base font-semibold rounded-full shadow-lg"
                       onClick={() => handleTopicClick(topicName)}
                     >
                       {topicName}
@@ -157,15 +176,27 @@ export default function QuoteGenerator() {
                 </div>
               </div>
               
-              <Separator />
+              <Separator className="bg-white/20 my-8" />
               
-              <div className="flex gap-2">
+              <div className="flex gap-4">
                 <Button 
                   type="submit" 
-                  className="flex-1" 
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-2xl text-lg" 
                   disabled={!topic.trim() || isLoading}
                 >
-                  {isLoading ? 'Generating Quotes...' : 'Generate Quotes'}
+                  {isLoading ? (
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Creating Magic...
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Generate Quotes
+                    </div>
+                  )}
                 </Button>
                 {(quotes.length > 0 || topic.trim()) && (
                   <Button 
@@ -173,8 +204,9 @@ export default function QuoteGenerator() {
                     variant="outline"
                     onClick={clearResults}
                     disabled={isLoading}
+                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 px-8 rounded-2xl font-semibold"
                   >
-                    Clear
+                    Reset
                   </Button>
                 )}
               </div>
@@ -182,29 +214,53 @@ export default function QuoteGenerator() {
           </CardContent>
         </Card>
 
+        {/* Modern quotes display */}
         {quotes.length > 0 && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-gray-900 text-center">
-              Quotes for "{topic}"
-            </h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-12 animate-in fade-in duration-1000">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                Wisdom on "{topic}"
+              </h2>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg"></div>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {quotes.map((quote, index) => (
-                <Card key={index} className="h-full">
-                  <CardContent className="p-6 h-full flex flex-col">
-                    <blockquote className="text-lg text-gray-700 mb-4 flex-grow">
-                      "{quote.text}"
-                    </blockquote>
-                    <cite className="text-sm font-semibold text-gray-500 text-right">
-                      — {quote.author}
-                    </cite>
-                    <Button 
-                      variant="outline" 
-                      className="mt-4" 
-                      onClick={() => copyToClipboard(quote.text, quote.author, index)}
-                      disabled={copyingIndex === index}
-                    >
-                      {copyingIndex === index ? 'Copying...' : 'Copy Quote'}
-                    </Button>
+                <Card 
+                  key={index} 
+                  className="group h-full backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-[1.03] rounded-3xl overflow-hidden"
+                >
+                  <CardContent className="p-8 h-full flex flex-col">
+                    <div className="flex-grow space-y-6">
+                      <div className="text-purple-300/60 text-8xl font-serif leading-none">"</div>
+                      <blockquote className="text-xl text-white/95 leading-relaxed font-medium -mt-6 pl-4">
+                        {quote.text}
+                      </blockquote>
+                    </div>
+                    <div className="mt-8 space-y-6">
+                      <cite className="text-purple-200/90 font-bold text-lg text-right block border-t border-white/20 pt-6">
+                        — {quote.author}
+                      </cite>
+                      <Button 
+                        variant="outline" 
+                        className="w-full bg-white/5 border-white/20 text-white hover:bg-white/15 transition-all duration-300 group-hover:shadow-xl rounded-2xl py-3 font-semibold text-base" 
+                        onClick={() => copyToClipboard(quote.text, quote.author, index)}
+                        disabled={copyingIndex === index}
+                      >
+                        {copyingIndex === index ? (
+                          <div className="flex items-center gap-3">
+                            <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></div>
+                            Copying...
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-3">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Copy Quote
+                          </div>
+                        )}
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
