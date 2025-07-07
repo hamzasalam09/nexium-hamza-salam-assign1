@@ -83,6 +83,15 @@ export default function QuoteGenerator() {
     setTopic(selectedTopic)
   }
 
+  const clearResults = () => {
+    setTopic('')
+    setQuotes([])
+    toast.info('Results cleared!', {
+      description: 'Ready to generate new quotes',
+      duration: 2000,
+    })
+  }
+
   const copyToClipboard = async (text: string, author: string, index: number) => {
     const quoteText = `"${text}" - ${author}`
     setCopyingIndex(index)
@@ -150,13 +159,25 @@ export default function QuoteGenerator() {
               
               <Separator />
               
-              <Button 
-                type="submit" 
-                className="w-full" 
-                disabled={!topic.trim() || isLoading}
-              >
-                {isLoading ? 'Generating Quotes...' : 'Generate Quotes'}
-              </Button>
+              <div className="flex gap-2">
+                <Button 
+                  type="submit" 
+                  className="flex-1" 
+                  disabled={!topic.trim() || isLoading}
+                >
+                  {isLoading ? 'Generating Quotes...' : 'Generate Quotes'}
+                </Button>
+                {(quotes.length > 0 || topic.trim()) && (
+                  <Button 
+                    type="button" 
+                    variant="outline"
+                    onClick={clearResults}
+                    disabled={isLoading}
+                  >
+                    Clear
+                  </Button>
+                )}
+              </div>
             </form>
           </CardContent>
         </Card>
