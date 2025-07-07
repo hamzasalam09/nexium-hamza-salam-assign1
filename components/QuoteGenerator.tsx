@@ -103,7 +103,7 @@ export default function QuoteGenerator() {
         description: `"${text.slice(0, 50)}${text.length > 50 ? '...' : ''}"`,
         duration: 3000,
       })
-    } catch (err) {
+    } catch {
       toast.error('Failed to copy quote', {
         description: 'Please try again or copy manually',
         duration: 4000,
@@ -220,7 +220,7 @@ export default function QuoteGenerator() {
           <div className="space-y-12 animate-in fade-in duration-500">
             <div className="text-center">
               <h2 className="text-4xl font-bold text-white mb-4">
-                Generating wisdom on "{topic}"...
+                Generating wisdom on &quot;{topic}&quot;...
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg animate-pulse"></div>
             </div>
@@ -258,7 +258,7 @@ export default function QuoteGenerator() {
           <div className="space-y-12">
             <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
               <h2 className="text-4xl font-bold text-white mb-4">
-                Wisdom on "{topic}"
+                Wisdom on &quot;{topic}&quot;
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg"></div>
             </div>
@@ -274,7 +274,7 @@ export default function QuoteGenerator() {
                 >
                   <CardContent className="p-8 h-full flex flex-col">
                     <div className="flex-grow space-y-6">
-                      <div className="text-purple-300/60 text-8xl font-serif leading-none">"</div>
+                      <div className="text-purple-300/60 text-8xl font-serif leading-none">&quot;</div>
                       <blockquote className="text-xl text-white/95 leading-relaxed font-medium -mt-6 pl-4">
                         {quote.text}
                       </blockquote>
