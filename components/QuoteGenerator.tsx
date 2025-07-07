@@ -140,7 +140,7 @@ export default function QuoteGenerator() {
 
         {/* Modern glassmorphism card */}
         <Card className="mb-12 backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
-          <CardHeader className="text-center bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm">
+          <CardHeader className="text-center border-b border-white/10 bg-white/[0.02]">
             <CardTitle className="text-3xl font-bold text-white mb-3">What moves you?</CardTitle>
             <CardDescription className="text-slate-300 text-lg">
               Enter a topic or select from our curated suggestions. Press Enter for instant inspiration!
