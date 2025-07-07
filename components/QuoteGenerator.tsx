@@ -73,6 +73,12 @@ export default function QuoteGenerator() {
     generateQuotes()
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !isLoading && topic.trim()) {
+      generateQuotes()
+    }
+  }
+
   const handleTopicClick = (selectedTopic: string) => {
     setTopic(selectedTopic)
   }
@@ -107,10 +113,9 @@ export default function QuoteGenerator() {
 
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Enter a Topic</CardTitle>
-            <CardDescription>
-              Type any topic or click on a suggestion below
-            </CardDescription>
+            <CardTitle>Enter a Topic</CardTitle>          <CardDescription>
+            Type any topic or click on a suggestion below. Press Enter to generate quotes quickly!
+          </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -122,6 +127,7 @@ export default function QuoteGenerator() {
                   placeholder="e.g., motivation, success, inspiration..."
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   className="text-lg"
                 />
               </div>
