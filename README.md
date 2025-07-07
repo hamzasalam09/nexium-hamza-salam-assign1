@@ -2,8 +2,8 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-15.3.5-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/TypeScript-5.8.3-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-4.x-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind" />
   <img src="https://img.shields.io/badge/ShadCN-UI-000000?style=for-the-badge&logo=shadcnui" alt="ShadCN" />
 </div>
 
@@ -14,7 +14,7 @@
 ### ✨ Key Features
 
 - **🎨 Modern Glassmorphism UI** - 2024 design trends with backdrop blur effects
-- **⚡ Instant Quote Generation** - Lightning-fast search across 6 curated categories
+- **⚡ Instant Quote Generation** - Lightning-fast search across 5 curated categories
 - **📱 Fully Responsive** - Perfect experience on mobile, tablet, and desktop
 - **🔍 Smart Search** - Intelligent keyword matching and fallback mechanisms
 - **📋 One-Click Copy** - Copy quotes with beautiful toast notifications
@@ -30,7 +30,7 @@
 - **React 19** - Latest React features and hooks
 
 ### Styling & UI
-- **Tailwind CSS 3.4** - Utility-first CSS framework
+- **Tailwind CSS 4.x** - Utility-first CSS framework
 - **ShadCN/UI** - Beautiful, accessible component library
 - **Glassmorphism Design** - Modern backdrop blur effects
 - **CSS Gradients** - Dynamic color schemes
@@ -57,7 +57,7 @@
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/hamzasalam09/nexium-hamza-salam-assign1
 cd nexium-hamza-salam-assign1
 
 # Install dependencies
@@ -111,26 +111,24 @@ npm start
 │   ├── QuoteGenerator.tsx    # Main quote generator component
 │   └── ui/                   # ShadCN UI components
 ├── 📊 data/                  # Data Layer
-│   └── quotes.json           # Quote database (6 categories)
+│   └── quotes.json           # Quote database (5 categories)
 ├── 🛠️ lib/                   # Utilities
 │   └── utils.ts              # Helper functions
 └── 📋 Configuration Files
     ├── package.json          # Dependencies & scripts
-    ├── tailwind.config.ts    # Tailwind configuration
     ├── components.json       # ShadCN component config
     └── tsconfig.json         # TypeScript configuration
 ```
 
 ## 📊 Quote Database
 
-Our curated collection includes **30+ inspiring quotes** across 6 categories:
+Our curated collection includes **25 inspiring quotes** across 5 categories:
 
 - **💪 Motivation** - Fuel your drive and ambition
 - **🏆 Success** - Wisdom from achievers and leaders  
 - **✨ Inspiration** - Spark creativity and wonder
 - **🧠 Wisdom** - Timeless insights and philosophy
-- **❤️ Life** - Reflections on the human experience
-- **💕 Love** - Beautiful thoughts on relationships
+- **💻 Technology** - Thoughts on innovation and digital transformation
 
 ## 🎨 Design Philosophy
 
