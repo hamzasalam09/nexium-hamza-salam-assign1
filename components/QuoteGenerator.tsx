@@ -114,42 +114,42 @@ export default function QuoteGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-2 sm:p-4 relative">
       {/* Modern background pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="max-w-6xl mx-auto py-12 relative z-10">
+      <div className="max-w-6xl mx-auto py-6 sm:py-12 relative z-10">
         {/* Modern header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 mb-8 shadow-2xl">
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <div className="text-center mb-8 sm:mb-16">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 mb-6 sm:mb-8 shadow-2xl">
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
             </svg>
           </div>
-          <h1 className="text-7xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight px-4">
             QuoteGenie
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium px-4">
             Discover profound wisdom and inspiration. Generate personalized quotes that resonate with your soul.
           </p>
         </div>
 
         {/* Modern glassmorphism card */}
-        <Card className="mb-12 backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
-          <CardHeader className="text-center border-b border-white/10 bg-white/[0.02]">
-            <CardTitle className="text-3xl font-bold text-white mb-3">What moves you?</CardTitle>
-            <CardDescription className="text-slate-300 text-lg">
+        <Card className="mb-8 sm:mb-12 backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden mx-2 sm:mx-0">
+          <CardHeader className="text-center border-b border-white/10 bg-white/[0.02] p-4 sm:p-6">
+            <CardTitle className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">What moves you?</CardTitle>
+            <CardDescription className="text-slate-300 text-base sm:text-lg px-2">
               Enter a topic or select from our curated suggestions. Press Enter for instant inspiration!
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-8 space-y-8">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="space-y-4">
-                <Label htmlFor="topic" className="text-white font-semibold text-lg">Your Topic</Label>
+          <CardContent className="p-4 sm:p-8 space-y-6 sm:space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              <div className="space-y-3 sm:space-y-4">
+                <Label htmlFor="topic" className="text-white font-semibold text-base sm:text-lg">Your Topic</Label>
                 <Input
                   id="topic"
                   type="text"
@@ -157,18 +157,18 @@ export default function QuoteGenerator() {
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="text-xl bg-white/10 border-white/20 text-white placeholder:text-white/40 backdrop-blur-sm focus:bg-white/20 transition-all duration-300 h-14 rounded-2xl px-6"
+                  className="text-lg sm:text-xl bg-white/10 border-white/20 text-white placeholder:text-white/40 backdrop-blur-sm focus:bg-white/20 transition-all duration-300 h-12 sm:h-14 rounded-2xl px-4 sm:px-6"
                 />
               </div>
               
-              <div className="space-y-6">
-                <Label className="text-white/90 font-semibold text-lg">Popular Topics:</Label>
-                <div className="flex flex-wrap gap-4">
+              <div className="space-y-4 sm:space-y-6">
+                <Label className="text-white/90 font-semibold text-base sm:text-lg">Popular Topics:</Label>
+                <div className="flex flex-wrap gap-2 sm:gap-4">
                   {availableTopics.map((topicName) => (
                     <Badge
                       key={topicName}
                       variant="secondary"
-                      className="cursor-pointer bg-gradient-to-r from-white/10 to-white/15 hover:from-white/20 hover:to-white/25 text-white border-white/20 transition-all duration-300 hover:scale-110 capitalize px-6 py-3 text-base font-semibold rounded-full shadow-lg"
+                      className="cursor-pointer bg-gradient-to-r from-white/10 to-white/15 hover:from-white/20 hover:to-white/25 text-white border-white/20 transition-all duration-300 hover:scale-110 capitalize px-3 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-full shadow-lg"
                       onClick={() => handleTopicClick(topicName)}
                     >
                       {topicName}
@@ -177,22 +177,22 @@ export default function QuoteGenerator() {
                 </div>
               </div>
               
-              <Separator className="bg-white/20 my-8" />
+              <Separator className="bg-white/20 my-6 sm:my-8" />
               
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button 
                   type="submit" 
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-2xl text-lg" 
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 sm:py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-2xl text-base sm:text-lg" 
                   disabled={!topic.trim() || isLoading}
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                       Creating Magic...
                     </div>
                   ) : (
                     <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                       Generate Quotes
@@ -205,7 +205,7 @@ export default function QuoteGenerator() {
                     variant="outline"
                     onClick={clearResults}
                     disabled={isLoading}
-                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 px-8 rounded-2xl font-semibold"
+                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold"
                   >
                     Reset
                   </Button>
@@ -217,34 +217,34 @@ export default function QuoteGenerator() {
 
         {/* Loading skeleton */}
         {isLoading && (
-          <div className="space-y-12 animate-in fade-in duration-500">
-            <div className="text-center">
-              <h2 className="text-4xl font-bold text-white mb-4">
+          <div className="space-y-8 sm:space-y-12 animate-in fade-in duration-500">
+            <div className="text-center px-4">
+              <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">
                 Generating wisdom on &quot;{topic}&quot;...
               </h2>
-              <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg animate-pulse"></div>
+              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg animate-pulse"></div>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-0">
               {[1, 2, 3].map((index) => (
                 <Card 
                   key={index} 
                   className="h-full backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl rounded-3xl overflow-hidden"
                 >
-                  <CardContent className="p-8 h-full flex flex-col">
-                    <div className="flex-grow space-y-6">
-                      <Skeleton className="w-12 h-12 rounded-full" />
-                      <div className="space-y-3">
-                        <Skeleton className="h-6 w-full" />
-                        <Skeleton className="h-6 w-5/6" />
-                        <Skeleton className="h-6 w-4/6" />
-                        <Skeleton className="h-6 w-3/6" />
+                  <CardContent className="p-4 sm:p-8 h-full flex flex-col">
+                    <div className="flex-grow space-y-4 sm:space-y-6">
+                      <Skeleton className="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
+                      <div className="space-y-2 sm:space-y-3">
+                        <Skeleton className="h-4 sm:h-6 w-full" />
+                        <Skeleton className="h-4 sm:h-6 w-5/6" />
+                        <Skeleton className="h-4 sm:h-6 w-4/6" />
+                        <Skeleton className="h-4 sm:h-6 w-3/6" />
                       </div>
                     </div>
-                    <div className="mt-8 space-y-6">
-                      <div className="border-t border-white/20 pt-6">
-                        <Skeleton className="h-6 w-40 ml-auto" />
+                    <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+                      <div className="border-t border-white/20 pt-4 sm:pt-6">
+                        <Skeleton className="h-4 sm:h-6 w-32 sm:w-40 ml-auto" />
                       </div>
-                      <Skeleton className="h-12 w-full rounded-2xl" />
+                      <Skeleton className="h-10 sm:h-12 w-full rounded-2xl" />
                     </div>
                   </CardContent>
                 </Card>
@@ -255,14 +255,14 @@ export default function QuoteGenerator() {
 
         {/* Modern quotes display */}
         {quotes.length > 0 && !isLoading && (
-          <div className="space-y-12">
-            <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
-              <h2 className="text-4xl font-bold text-white mb-4">
+          <div className="space-y-8 sm:space-y-12">
+            <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700 px-4">
+              <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">
                 Wisdom on &quot;{topic}&quot;
               </h2>
-              <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg"></div>
+              <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full shadow-lg"></div>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-0">
               {quotes.map((quote, index) => (
                 <Card 
                   key={index} 
@@ -272,31 +272,31 @@ export default function QuoteGenerator() {
                     animationFillMode: 'both'
                   }}
                 >
-                  <CardContent className="p-8 h-full flex flex-col">
-                    <div className="flex-grow space-y-6">
-                      <div className="text-purple-300/60 text-8xl font-serif leading-none">&quot;</div>
-                      <blockquote className="text-xl text-white/95 leading-relaxed font-medium -mt-6 pl-4">
+                  <CardContent className="p-4 sm:p-8 h-full flex flex-col">
+                    <div className="flex-grow space-y-4 sm:space-y-6">
+                      <div className="text-purple-300/60 text-6xl sm:text-8xl font-serif leading-none">&quot;</div>
+                      <blockquote className="text-base sm:text-xl text-white/95 leading-relaxed font-medium -mt-4 sm:-mt-6 pl-2 sm:pl-4">
                         {quote.text}
                       </blockquote>
                     </div>
-                    <div className="mt-8 space-y-6">
-                      <cite className="text-purple-200/90 font-bold text-lg text-right block border-t border-white/20 pt-6">
+                    <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+                      <cite className="text-purple-200/90 font-bold text-base sm:text-lg text-right block border-t border-white/20 pt-4 sm:pt-6">
                         — {quote.author}
                       </cite>
                       <Button 
                         variant="outline" 
-                        className="w-full bg-white/5 border-white/20 text-white hover:bg-white/15 transition-all duration-300 group-hover:shadow-xl rounded-2xl py-3 font-semibold text-base" 
+                        className="w-full bg-white/5 border-white/20 text-white hover:bg-white/15 transition-all duration-300 group-hover:shadow-xl rounded-2xl py-2 sm:py-3 font-semibold text-sm sm:text-base" 
                         onClick={() => copyToClipboard(quote.text, quote.author, index)}
                         disabled={copyingIndex === index}
                       >
                         {copyingIndex === index ? (
-                          <div className="flex items-center gap-3">
-                            <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></div>
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></div>
                             Copying...
                           </div>
                         ) : (
-                          <div className="flex items-center gap-3">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                             Copy Quote
