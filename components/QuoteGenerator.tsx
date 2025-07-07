@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { toast } from 'sonner'
 import quotesData from '@/data/quotes.json'
 
 interface Quote {
@@ -79,10 +80,15 @@ export default function QuoteGenerator() {
     const quoteText = `"${text}" - ${author}`
     try {
       await navigator.clipboard.writeText(quoteText)
-      // Simple feedback - could be enhanced with toast notifications
-      console.log('Quote copied to clipboard!')
+      toast.success('Quote copied to clipboard!', {
+        description: `"${text.slice(0, 50)}${text.length > 50 ? '...' : ''}"`,
+        duration: 3000,
+      })
     } catch (err) {
-      console.error('Failed to copy quote:', err)
+      toast.error('Failed to copy quote', {
+        description: 'Please try again or copy manually',
+        duration: 4000,
+      })
     }
   }
 
